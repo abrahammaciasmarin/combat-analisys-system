@@ -26,7 +26,7 @@ flowchart LR
   rabbitmq --> ds
   ds --> postgres & mongo
 
-(` ``` `)
+` ``` `
 
 ---
 
