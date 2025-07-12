@@ -1,45 +1,15 @@
 # Diagrama de Arquitectura
 
-```mermaid
-flowchart LR
-  subgraph Infraestructura
-    localstack[(LocalStack)]
-    postgres[(PostgreSQL)]
-    mongo[(MongoDB)]
-    rabbitmq[(RabbitMQ)]
-  end
+Este diagrama representa el flujo completo del sistema Combat Analysis, desde la carga de video hasta la visualización de tácticas sugeridas.
 
-  subgraph Servicios
-    vps[Video Parser]
-    pas[Pattern Analyzer]
-    ses[Suggestion Engine]
-    ds[Dashboard]
-  end
+![Diagrama de Arquitectura](Combat_Analysis_System_Architecture.png)
 
-  vps --> rabbitmq
-  rabbitmq --> pas
-  pas --> postgres & mongo
-  pas --> rabbitmq
-  rabbitmq --> ses
-  ses --> postgres
-  ses --> rabbitmq
-  rabbitmq --> ds
-  ds --> postgres & mongo
+## 🧭 Componentes Principales
 
-```
+- **Application Tier**: contiene los microservicios que procesan, analizan y recomiendan.
+- **Messaging Layer**: RabbitMQ con tres colas: `combat-events-queue`, `pattern-analysis-queue` y `tactical-tips-queue`.
+- **Data Layer**: PostgreSQL y MongoDB segmentados por contexto (`events`, `patterns`, `suggestions`).
+- **Frontend**: un dashboard que consume el endpoint `/suggestions` y responde a eventos en tiempo real.
 
----
+Cada microservicio se comunica mediante colas, favoreciendo la asincronía, la escalabilidad y la modularidad.
 
-## 🛠️ Si ya lo corregiste y sigue fallando…
-
-- Verifica que tu editor de Markdown (VSCode, Obsidian, etc.) soporte Mermaid.  
-- Si estás en GitHub, recuerda que Markdown por defecto **no renderiza Mermaid** a menos que uses extensiones (como en GitHub Pages con MkDocs o Docusaurus).
-
-Alternativas:
-
-- Exportar el diagrama desde [mermaid.live](https://mermaid.live/) como imagen (`PNG` o `SVG`)  
-- Guardar en `docs/Infra/architecture.png`  
-- Y enlazarlo desde `Architecture.md` así:
-
-```markdown
-![Diagrama del sistema](architecture.png)
