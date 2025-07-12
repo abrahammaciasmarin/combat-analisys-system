@@ -16,30 +16,30 @@ flowchart LR
     ds[Dashboard]
   end
 
-  vps -->|Cargas video / S3| localstack
-  vps -->|Publica eventos| rabbitmq
-  rabbitmq -->|Consume| pas
-  pas -->|Guarda patrones| postgres
-  pas -->|Guarda eventos| mongo
-  pas -->|Publica análisis| rabbitmq
-  rabbitmq -->|Consume| ses
-  ses -->|Carga patrones| postgres
-  ses -->|Envía sugerencias| rabbitmq
-  rabbitmq -->|Consume| ds
-  ds -->|Lee datos| postgres & mongo
+  vps --> rabbitmq
+  rabbitmq --> pas
+  pas --> postgres & mongo
+  pas --> rabbitmq
+  rabbitmq --> ses
+  ses --> postgres
+  ses --> rabbitmq
+  rabbitmq --> ds
+  ds --> postgres & mongo
 
-Cuando tu sitio de docs renderice Markdown puedes activar el plugin de Mermaid para verlo inline.
+Ese triple backtick de cierre (` ``` `) es obligatorio.
 
 ---
 
-## 3. Opción imagen estática
+## 🛠️ Si ya lo corregiste y sigue fallando…
 
-1. Abre [mermaid.live](https://mermaid.live/) y pega únicamente el bloque dentro de ```mermaid …```.  
-2. Ajusta tamaños o colores y haz clic en **Export** → **PNG** (o **SVG**).  
-3. Guarda el archivo como `docs/Infra/architecture.png`.  
-4. En `docs/Infra/Architecture.md` escribe:
+- Verifica que tu editor de Markdown (VSCode, Obsidian, etc.) soporte Mermaid.  
+- Si estás en GitHub, recuerda que Markdown por defecto **no renderiza Mermaid** a menos que uses extensiones (como en GitHub Pages con MkDocs o Docusaurus).
 
-   ```markdown
-   # Diagrama de Arquitectura
+Alternativas:
 
-   ![Arquitectura del sistema](architecture.png)
+- Exportar el diagrama desde [mermaid.live](https://mermaid.live/) como imagen (`PNG` o `SVG`)  
+- Guardar en `docs/Infra/architecture.png`  
+- Y enlazarlo desde `Architecture.md` así:
+
+```markdown
+![Diagrama del sistema](architecture.png)
