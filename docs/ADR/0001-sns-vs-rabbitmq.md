@@ -1,7 +1,7 @@
 # ADR 0001: SNS + SQS vs RabbitMQ
 
 ## Contexto  
-Necesitamos un sistema de colas para comunicación asíncrona en local y producción.
+Necesitamos un sistema de colas para comunicación asíncrona
 
 ## Opciones consideradas  
 - Amazon SNS + SQS  
