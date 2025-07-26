@@ -5,6 +5,7 @@
 
 Colección principal: combat-events
 
+```json
 {
   "_id": {
     "$oid": "688110c097ef8c3cfa749b2a"
