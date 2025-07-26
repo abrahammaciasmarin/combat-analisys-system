@@ -1,0 +1,7 @@
+train: C:\Users\abrah\combat-analisys-system\video_parser_service\prelabeled_dataset\images  # ajusta según tu máquina
+val: C:\Users\abrah\combat-analisys-system\video_parser_service\prelabeled_dataset\images    # si no quieres separar train/val aún
+txt: C:\Users\abrah\combat-analisys-system\video_parser_service\prelabeled_dataset\labels
+frames: C:\Users\abrah\combat-analisys-system\video_parser_service\frames
+names:
+  0: wukong_idle
+  1: wukong_running

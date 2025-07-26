@@ -1,0 +1,19 @@
+server:
+  port: 8082
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/db-events
+      authentication-database: admin
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    queue: event.queue
+    listener:
+      simple:
+        acknowledge-mode: auto
+        concurrency: 1
+        max-concurrency: 5

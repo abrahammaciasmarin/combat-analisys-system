@@ -26,9 +26,9 @@ En esta arquitectura, RabbitMQ orquesta la mensajería entre los microservicios 
 
 ```json
 {
-  "timestamp": "2025-07-12T02:48:00Z",
-  "enemy": "Ashina Elite",
-  "action": "sweep_attack",
-  "position": { "x": 45.7, "y": 22.3 },
-  "player_response": "jump"
+  "sample_id": "sample_07",
+  "game": "Sekiro",
+  "boss_in_turn": "Isshin",
+  "total_frames": 1533,
+  "timestamp": "2025-07-22T18:30:00Z"
 }
