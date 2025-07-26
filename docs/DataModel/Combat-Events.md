@@ -31,7 +31,7 @@ Colección principal: combat-events
     }
   ]
 }
-
+```
 🗂️ Índices sugeridos
 
 sample_id
