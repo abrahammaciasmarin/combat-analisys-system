@@ -20,11 +20,11 @@ El CPU es crítico en el Video Parser Service Query, especialmente para manejar 
 
 | Estrategia | Beneficio | Recomendación |
 |:----------------:|:----------------:|:----------------:|
-| **Índices en MongoDB** | Reduce el volumen de documentos escaneados | Indexar por sample_id, frame_id, phase, action |
+| **Índices en MongoDB** | Reduce el volumen de documentos escaneados | Indexar por sample_id, game, boss |
 | **Proyecciones específicas** | Solo se consulta lo necesario | Evita consultar el array completo de detections si no se usa |
 | **Workers en paralelo** | Escala el CPU horizontalmente | El servicio puede correr con múltiples threads/instancias | 
 
-**Streaming con chunked response **
+**Streaming con chunked response**
 
 El streaming con chunked response es una técnica que permite enviar datos en partes (cunks) mientras se procesan, en lugar de esperar a que toda la consulta termine. Esto es especialmente útil para manejar grandes volúmenes de datos como los miles de documentos generados por analizar el video.
 
@@ -48,11 +48,9 @@ En este caso, no se enviarán los frames por streaming para ser renderizados, si
 
 **Uso del streaming en el Pattern Analyzer Service**
 
-El streaming será utilizado por el Pattern Analyzer Service para trabajar con los datos en busca de patrones. Este servicio los procesará internamente para identificar patrones recurrentes y generar insights tácticos. Esto evita time outs debido a la naturaleza de la respuestas de Video Parser Query. 
-La manera en que el Pattern Analyzer Service sabra que inofrmacion pedir, sera atra vez de un evento publicado en una cola de RabbitMQ, en el cual se le informara que un video acaba de ser procesdado y la informacion extraida esta lista para ser analizada.
+El streaming será utilizado por el Pattern Analyzer Service para trabajar con los datos en busca de patrones. Este servicio los procesará internamente para identificar patrones recurrentes y generar insights tácticos. Esto evita time outs debido a la naturaleza de la respuestas del Video Parser Query. 
+La manera en que el Pattern Analyzer Service sabra que inofrmacion pedir, sera atra vez de un evento publicado en una cola de RabbitMQ, en el cual se le informara que un video acaba de ser procesado y la informacion extraida esta lista para ser analizada.
 
-Este evento contendrá almenos el sample_id, game y boss del video que acaba de ser procesado y analizado. Podría incluir también metadatos útiles como la duración del video, el número total de frames procesados, o un timestamp de finalización.
+Este evento contendrá almenos el sample_id, game y boss del video que acaba de ser procesado. Podría incluir también metadatos útiles como la duración del video, el número total de frames procesados, o un timestamp de finalización.
 
-Cuando pattern-analyzer recibe el evento, solicita el stream de datos al video-parser-query:
-
-Con el sample_id, game y boss obtenidos del evento de la cola, el pattern-analyzer ahora sabe exactamente qué video necesita analizar.
+Cuando pattern-analyzer recibe el evento, solicita el stream de datos al video-parser-query con el sample_id, game y boss obtenidos del evento de la cola, el pattern-analyzer ahora sabe exactamente qué video necesita analizar.
