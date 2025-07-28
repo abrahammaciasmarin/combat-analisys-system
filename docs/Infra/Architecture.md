@@ -1,3 +1,20 @@
+# Architecture Diagram
+
+This diagram represents the complete flow of the system Combat Analysis, from uploading the video until the visualization of suggested tactics.
+
+![Architecture Diagram](Combat_Analysis_System_Architecture.png)
+
+## 🧭 Componentes Principales
+
+- **Application Tier**: It contains all the microservices that process, analyze and suggest.
+- **Messaging Layer**: RabbitMQ 3 queues: `combat-events-queue`, `pattern-analysis-queue` y `tactical-tips-queue`.
+- **Data Layer**: MongoDB by context (`events`, `patterns`, `suggestions`).
+- **Frontend**: A dashboard that consumes the endpoint `/suggestions` y respond to events in real time.
+
+Each microservice establishes communication through queues, favoring synchronous communication, scalability and modularity.
+
+
+
 # Diagrama de Arquitectura
 
 Este diagrama representa el flujo completo del sistema Combat Analysis, desde la carga de video hasta la visualización de tácticas sugeridas.
