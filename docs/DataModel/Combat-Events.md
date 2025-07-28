@@ -1,7 +1,7 @@
-🗃️ Modelo de Persistencia en MongoDB
-🛠️ Diseño de Persistencia en DB-events
+**🗃️ Modelo de Persistencia en MongoDB**
+**🛠️ Diseño de Persistencia en DB-events**
 
-📂 Estructura de Colecciones
+**📂 Estructura de Colecciones**
 
 Colección principal: combat-events
 
@@ -32,45 +32,45 @@ Colección principal: combat-events
   ]
 }
 ```
-🗂️ Índices sugeridos
+**🗂️ Índices sugeridos**
 
-sample_id
+1. sample_id
 
-game
+2. game
 
-boss
+3. boss
 
-source
+4. source
 
-action
+5. action
 
-phase
+6. phase
 
-player_action
+7. player_action
 
 
-Descripción de propiedades:
+**Descripción de propiedades:**
 
-timestamp: Marca de tiempo en formato ISO 8601 que indica cuándo se generó el evento.
+* timestamp: Marca de tiempo en formato ISO 8601 que indica cuándo se generó el evento.
 
-sample_id: Numero de video muestra de donde se extrajo el frame.
+* sample_id: Numero de video muestra de donde se extrajo el frame.
 
-game: Nombre del juego en el que ocurre el evento.
+* game: Nombre del juego en el que ocurre el evento.
 
-boss: Nombre del jefe activo durante el evento.
+* boss: Nombre del jefe activo durante el evento.
 
-source: Origen del evento, en este caso, el sistema YOLO.
+* source: Origen del evento, en este caso, el sistema YOLO.
 
-frame_id: Identificador único del frame analizado.
+* fra0me_id: Identificador único del frame analizado.
 
-detections: Lista de acciones detectadss en el frame.
+* detections: Lista de acciones detectadss en el frame.
 
-  action: Nombre de la accion detectada.
+*  action: Nombre de la accion detectada.
   
-  confidence: Nivel de confianza de la detección (valor entre 0 y 1).
+*  confidence: Nivel de confianza de la detección (valor entre 0 y 1).
   
-  bbox: Coordenadas y tamaño del cuadro delimitador del objeto detectado (x1, y1, x2, y2).
+*  bbox: Coordenadas y tamaño del cuadro delimitador del objeto detectado (x1, y1, x2, y2).
   
-  phase: Fase del combate en la que ocurre la acción.
+*  phase: Fase del combate en la que ocurre la acción.
   
-  player_action: Indica si la acción fue realizada por el jugador (true/false).
+*  player_action: Indica si la acción fue realizada por el jugador (true/false).
