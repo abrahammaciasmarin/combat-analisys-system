@@ -1,6 +1,6 @@
 # Architecture Diagram
 
-This diagram represents the complete flow of the system Combat Analysis, from uploading the video until the visualization of suggested tactics.
+This diagram represents the complete flow of the Combat Analysis system, from uploading the video until the visualization of suggested tactics.
 
 ![Architecture Diagram](Combat_Analysis_System_Architecture.png)
 
