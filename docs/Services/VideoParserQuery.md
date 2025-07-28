@@ -18,7 +18,7 @@ CPU is critical in the Video Parser Service Query, specially for handling high v
 
 
 
-**Possible optimizations for mitigate workload in CPU**
+**Possible optimizations for mitigate over workload in CPU**
 
 | Strategy | Benefit | Recommendation |
 |:----------------:|:----------------:|:----------------:|
