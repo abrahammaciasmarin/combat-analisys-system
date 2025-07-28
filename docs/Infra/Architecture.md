@@ -4,7 +4,7 @@ This diagram represents the complete flow of the system Combat Analysis, from up
 
 ![Architecture Diagram](Combat_Analysis_System_Architecture.png)
 
-## 🧭 Componentes Principales
+## 🧭 Main Components
 
 - **Application Tier**: It contains all the microservices that process, analyze and suggest.
 - **Messaging Layer**: RabbitMQ 3 queues: `combat-events-queue`, `pattern-analysis-queue` y `tactical-tips-queue`.
