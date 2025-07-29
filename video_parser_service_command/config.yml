@@ -1,0 +1,53 @@
+app:
+  name: video-parser-service
+  version: 1.0
+
+database:
+  mongodb:
+    uri: mongodb://localhost:27017
+    db_name: db-events
+    collection: combat_events
+
+messaging:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    exchange: combat-events-exchange
+    exchange_type: direct
+    queue: combat-events-queue
+    routing_key: combat-events-key
+    durable: True
+    delivery_mode: 2
+
+detectors:
+  yolo:
+    gpu: cuda
+    cpu: cpu
+    models:
+      - C:/Users/abrah/combat-analisys-system/runs/detect/wukong_idle_model/weights/best.pt
+      - C:/Users/abrah/combat-analisys-system/runs/detect/wukong_running_model/weights/best.pt
+  combat:
+    train: C:\Users\abrah\combat-analisys-system\video_parser_service\prelabeled_dataset\images  # ajusta según tu máquina
+    val: C:\Users\abrah\combat-analisys-system\video_parser_service\prelabeled_dataset\images    # si no quieres separar train/val aún
+    txt: C:\Users\abrah\combat-analisys-system\video_parser_service\prelabeled_dataset\labels
+    frames: C:\Users\abrah\combat-analisys-system\video_parser_service\frames
+    names:
+      0: wukong_idle
+      1: wukong_running
+
+logging:
+  level: INFO
+  file_path: logs/service.log
+  rotation: daily
+  format: '%(asctime)s - %(levelname)s - %(message)s'
+
+retry:
+  max_attempts: 3
+  backoff_seconds: 2
+  enable_retries: true
+
+healthcheck:
+  endpoint: /health
+  enabled: true

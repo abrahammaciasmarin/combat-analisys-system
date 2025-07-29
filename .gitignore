@@ -1,0 +1,7 @@
+# Ignore Python compiled files
+*.pyc
+
+# Ignore PyTorch model files
+*.pt
+
+*.mp4

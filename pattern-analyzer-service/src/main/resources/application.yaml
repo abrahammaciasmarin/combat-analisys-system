@@ -11,9 +11,13 @@ spring:
     port: 5672
     username: guest
     password: guest
-    queue: event.queue
+    queue: combat-events-queue
     listener:
       simple:
         acknowledge-mode: auto
         concurrency: 1
         max-concurrency: 5
+
+video-parser-service:
+  base-url: http://localhost:8081
+  query-path: /api/documents
